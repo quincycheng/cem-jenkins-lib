@@ -10,9 +10,9 @@ def call(Map config = [:]) {
   def postRC = post.getResponseCode();
 
   if(postRC.equals(200)) {
-      def responseText = (string)post.getInputStream().getText();
+      //def responseText = post.getInputStream().getText();
 
-      //def resultJson = readJSON text: responseText
+      def resultJson = readJSON text: post.getInputStream().getText();
       //println( resultJson.token )
   }
 
