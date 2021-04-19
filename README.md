@@ -1,2 +1,73 @@
 # cem-jenkins-lib
 Jenkins Shared Library for CyberArk Cloud Entitlements Manager
+
+## Installation
+
+1. At Jenkins web console, access `Manage Jenkins` > `Configure System`
+2. Under `Global Pipeline Libraries`, add the following library
+   - Name: `cem-jenkins-lib`
+   - Default version: `main`
+   - Modern SCM \ GitHub \ Repository HTTPS URL: `https://github.com/quincycheng/cem-jenkins-lib.git`
+
+
+## Configuration
+
+1. Add `@Library("cem-jenkins-lib") _` at the beginning of the pipeline script
+2. Add CEM API Key to pipeline, by either:
+   - Environment variables `CEM_ORG` for CEM organization & `CEM_APIKEY` for CEM API Access Key (using Conjur if possible), or
+   - Passing `org` and `accessKey` as parameters to the steps
+
+## Steps
+Below are the step avaliable in this shared library and sample code snippets. 
+### Get Accounts
+```
+def result = cemGetAccounts()
+println (result.data.size() )
+for (platform in result.data) {
+    println("Platform: $platform.platform")
+    platform.accounts.each {
+        println("workspace id: ${it.workspace_id}, status: ${it.workspace_status}")
+    }
+}
+```
+
+### Get Entities
+
+```
+def result = cemGetEntities(platform: env.demo_platform)
+println("total no of entities: " + result.hits.size() )
+result.hits.each {
+    println "Name: $it.entityName, Score: $it.riskTotalScore"
+}
+```
+
+### Get Entity Details
+```
+def result = cemGetEntityDetails(platform: env.demo_platform, accountId: env.demo_accountId, entityId: env.demo_entityId)
+println "Name: $result.entity_name, Score: $result.exposure_level"
+```
+
+### Get Recommandations
+```
+def result = cemGetRecommendations(platform: env.demo_platform, accountId: env.demo_accountId, entityId: env.demo_entityId)                    
+println("Recommendations of $result.entity_id")
+result.recommendations.active_recommendations.each {
+    println "$it"
+}
+```
+
+### Get Remediations
+```
+def result = cemGetRemediations(platform: env.demo_platform, accountId: env.demo_accountId, entityId: env.demo_entityId)
+println("Remediations of $result.entityId")
+result.remediations.each {
+    println("$it.UN_USED_PERMISSIONS.LEAST_PRIVILEGE.data")
+}
+```
+
+## Sample Pipeline
+You can refer to the sample pipeline for all steps at [/example/Jenkinsfile](/example/Jenkinsfile)
+
+## Reference
+- Jenkins Shared Library: https://www.jenkins.io/doc/book/pipeline/shared-libraries/
+- CyberArk CEM API doc: https://docs.cyberark.com/Product-Doc/OnlineHelp/CEM/Latest/en/Content/HomeTilesLPs/LP-Tile6.htm
