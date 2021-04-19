@@ -1,5 +1,4 @@
 def call(Map config = [:]) {
-   config.token = cemLogin(config)
    theUrl = 'https://api.cem.cyberark.com/cloudEntities/api/search?'
    if (config.platform?.trim()) { theUrl += "&platform=${config.platform}" }
    if (config.accountId?.trim()) { theUrl += "&account_id=${config.accountId}" }
