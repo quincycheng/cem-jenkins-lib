@@ -1,3 +1,3 @@
 def call(Map config = [:]) {
-   sh "echo ${config.org} ${conjur.apiKey}"
+   sh "echo ${config.org} ${config.apiKey}"
 }
