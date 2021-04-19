@@ -5,5 +5,7 @@ def call(Map config = [:]) {
    if (config.entityId?.trim()) { theUrl += "&entity_id=${config.entityId}" }
 
    result = cemGetRequest(url: theUrl, token: cemLogin(config) )
+   println( result )
+
    return result
 }
