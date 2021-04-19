@@ -6,11 +6,9 @@ def call(Map config = [:]) {
   get.setRequestMethod('GET')
   get.setDoOutput(true)
   get.setRequestProperty('Content-Type', 'application/json')
-
-    get.setRequestProperty('Authorization', 'Bearer ${config.token}')
+  get.setRequestProperty('Authorization', "Bearer ${config.token}")
 
   
-  get.getOutputStream().write(reqBody.getBytes('UTF-8'))
   def getRC = get.getResponseCode()
 
   if (getRC.equals(200)) {
