@@ -1,0 +1,84 @@
+@Library('cem-jenkins-lib') _
+
+pipeline {
+    agent any
+
+    environment {
+        CEM_ORG = '<Your CEM Organization'
+        CEM_APIKEY = '<Your CEM API Access Key'
+    }
+
+    stages {
+        stage('Get Accounts') {
+            steps {
+                script {
+                    def result = cemGetAccounts()
+                    println (result.data.size() )
+                    for (platform in result.data) {
+                        println("Platform: $platform.platform")
+                        platform.accounts.each {
+                            println("workspace id: ${it.workspace_id}, status: ${it.workspace_status}")
+                        }
+
+                        if (!env.demo_platform) { env.demo_platform = "$platform.platform" }
+                    }
+                }
+            }
+        }
+        stage('Get Entities') {
+            steps {
+                script {
+                    def result = cemGetEntities(platform: env.demo_platform)
+                    if (result) {
+                        println('total no of entities: ' + result.hits.size() )
+                        result.hits.each {
+                            println "Name: $it.entityName, Score: $it.riskTotalScore"
+
+                            if (!env.demo_accountId) { env.demo_accountId = "$it.accountId" }
+                            if (!env.demo_entityId) { env.demo_entityId = "$it.entityId" }
+                        }
+                    }
+                }
+            }
+        }
+        stage('Get Entity Details') {
+            steps {
+                script {
+                    def result = cemGetEntityDetails(platform: env.demo_platform, accountId: env.demo_accountId, entityId: env.demo_entityId)
+
+                    if (result) {
+                        println "Name: $result.entity_name, Score: $result.exposure_level"
+                    }
+                }
+            }
+        }
+        stage('Get Recommendations') {
+            steps {
+                script {
+                    def result = cemGetRecommendations(platform: env.demo_platform, accountId: env.demo_accountId, entityId: env.demo_entityId)
+
+                    if (result) {
+                        println("Recommendations of $result.entity_id")
+                        result.recommendations.active_recommendations.each {
+                            println "$it"
+                        }
+                    }
+                }
+            }
+        }
+        stage('Get Remediations') {
+            steps {
+                script {
+                    def result = cemGetRemediations(platform: env.demo_platform, accountId: env.demo_accountId, entityId: env.demo_entityId)
+
+                    if (result) {
+                        println("Remediations of $result.entityId")
+                        result.remediations.each {
+                            println("$it.UN_USED_PERMISSIONS.LEAST_PRIVILEGE.data")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
