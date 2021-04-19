@@ -1,16 +1,17 @@
 def call(Map config = [:]) {
-   def requestBody = "{\"organization\": \"${config.org}\",\"accessKey\":\"${config.apiKey}\"}"
+  def reqBody = "{\"organization\": \"${config.org}\",\"accessKey\":\"${config.apiKey}\"}"
+  def reqUrl = "https://api.cem.cyberark.com/apis/login"
 
-
-  sh "echo ${requestBody}"
-
-  response = httpRequest customHeaders: [[name: 'Content-Type', value: 'application/x-www-form-urlencoded;charset=UTF-8']], 
-		httpMode: "POST",
-  		requestBody:requestBody,
-		url: "https://api.cem.cyberark.com/apis/login"
-             
-
-  sh "echo ${response.content}"
+  def post = new URL(reqUrl).openConnection();
+  post.setRequestMethod("POST")
+  post.setDoOutput(true)
+  post.setRequestProperty("Content-Type", "application/json")
+  post.getOutputStream().write(reqBody.getBytes("UTF-8"));
+  def postRC = post.getResponseCode();
+  println(postRC);
+  if(postRC.equals(200)) {
+      println(post.getInputStream().getText());
+  }
 
 
 }
