@@ -1,5 +1,5 @@
 def call(Map config = [:]) {
-   def requestBody = "{\"organization\": \"${config.org}\","accessKey\":\"${config.apiKey}\"}"
+   def requestBody = "{\"organization\": \"${config.org}\",\"accessKey\":\"${config.apiKey}\"}"
 
 
   sh "echo ${requestBody}"
