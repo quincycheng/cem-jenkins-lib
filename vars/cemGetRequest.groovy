@@ -1,11 +1,15 @@
 def call(Map config = [:]) {
 
   def get = new URL(config.url).openConnection()
-  get.addHeader("Authorization", "Bearer ${config.token}")
+  //get.addHeader("Authorization", "Bearer ${config.token}")
 
   get.setRequestMethod('GET')
   get.setDoOutput(true)
   get.setRequestProperty('Content-Type', 'application/json')
+
+    get.setRequestProperty('Authorization', 'Bearer ${config.token}')
+
+  
   get.getOutputStream().write(reqBody.getBytes('UTF-8'))
   def getRC = get.getResponseCode()
 
