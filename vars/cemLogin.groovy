@@ -8,9 +8,12 @@ def call(Map config = [:]) {
   post.setRequestProperty("Content-Type", "application/json")
   post.getOutputStream().write(reqBody.getBytes("UTF-8"));
   def postRC = post.getResponseCode();
-  println(postRC);
+
   if(postRC.equals(200)) {
       println(post.getInputStream().getText());
+
+      def resultJson = readJSON text: post.getInputStream().getText();
+      println( resultJson.token );
   }
 
 
