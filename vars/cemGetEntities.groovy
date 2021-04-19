@@ -8,6 +8,5 @@ def call(Map config = [:]) {
    if (config.nextToken?.trim()) { theUrl += "&next_token=${config.nextToken}" }
 
    result = cemGetRequest(url: theUrl, token: cemLogin(config) )
-   println( "theresult: $result")
    return result
 }
