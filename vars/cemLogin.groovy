@@ -14,8 +14,7 @@ def call(Map config = [:]) {
     post = null
     //println( (String)respText )
     respJson = readJSON text: (String)respText
-    println( respJson.token )
-
+    return respJson.token 
   }
 }
 
