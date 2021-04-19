@@ -11,10 +11,8 @@ def call(Map config = [:]) {
 
   if (postRC.equals(200)) {
     respText = post.getInputStream().getText()
-    println( respText )
-
-    respJson = readJSON text:respText
-
+    println( (String)respText )
+    respJson = readJSON text: (String)respText
     println( respJson.token )
   }
 
