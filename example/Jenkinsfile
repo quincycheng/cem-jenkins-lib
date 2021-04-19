@@ -4,8 +4,8 @@ pipeline {
     agent any
 
     environment {
-        CEM_ORG = '<Your CEM Organization'
-        CEM_APIKEY = '<Your CEM API Access Key'
+        CEM_ORG = '<Your CEM Organization>'
+        CEM_APIKEY = '<Your CEM API Access Key>'
     }
 
     stages {
