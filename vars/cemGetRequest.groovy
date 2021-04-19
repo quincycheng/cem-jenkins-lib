@@ -10,6 +10,8 @@ def call(Map config = [:]) {
     respText = get.getInputStream().getText()
     get = null
     respJson =  readJSON text: (String)respText
+
+    println(responJson)
     return respJson
   }
 }
