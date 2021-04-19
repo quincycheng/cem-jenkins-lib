@@ -1,5 +1,9 @@
 def call(Map config = [:]) {
-  def reqBody = "{\"organization\": \"${config.org}\",\"accessKey\":\"${config.apiKey}\"}"
+
+  theOrg = config.org ? config.org : System.getenv("CEM_ORG")
+  theApiKey = config.accessKey ? config.accessKey : System.getenv("CEM_APIKEY")
+
+  def reqBody = "{\"organization\": \"${theOrg}\",\"accessKey\":\"${theApiKey}\"}"
   def reqUrl = 'https://api.cem.cyberark.com/apis/login'
 
   def post = new URL(reqUrl).openConnection()
@@ -12,11 +16,7 @@ def call(Map config = [:]) {
   if (postRC.equals(200)) {
     respText = post.getInputStream().getText()
     post = null
-    //println( (String)respText )
     respJson = readJSON text: (String)respText
-    return respJson.token 
+    return respJson.token
   }
 }
-
-
-

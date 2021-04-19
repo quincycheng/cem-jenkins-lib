@@ -7,5 +7,5 @@ def call(Map config = [:]) {
    if (config.shadowAdmin?.trim()) { theUrl += "&shadow_admin=${config.shadowAdmin}" }
    if (config.nextToken?.trim()) { theUrl += "&next_token=${config.nextToken}" }
 
-   cemGetRequest(url: theUrl, token: cemLogin(config) )
+   return cemGetRequest(url: theUrl, token: cemLogin(config) )
 }
