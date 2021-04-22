@@ -99,6 +99,7 @@ You can refer to the sample pipeline for all steps at [/example/Jenkinsfile](/ex
 
 ## Webhook
 You can refer to the procedure to register the CEM webhook at https://github.com/quincycheng/cem-jenkins-slack-conjur#to-register-cem-webhook-in-jenkins
+Please note that setting up webhook doesn't require this shared library as dependency.
 
 ## Reference
 - Jenkins Shared Library: https://www.jenkins.io/doc/book/pipeline/shared-libraries/
