@@ -1,6 +1,23 @@
 # cem-jenkins-lib
 Jenkins Shared Library for CyberArk Cloud Entitlements Manager
 
+## Quick Demo
+
+![user_prompt](https://user-images.githubusercontent.com/4685314/115691283-7d6f5b00-a390-11eb-9921-bddb20fbe7a5.PNG)
+
+1. [Install this shared library](#installation)
+2. Add a new Jenkins pipeline project
+3. In the pipeline configuration, under `Pipeline`, set the following values
+   - Definition: `Pipeline script from SCM`
+   - SCM: `Git`
+   - Repository URL: `https://github.com/quincycheng/cem-jenkins-lib.git`
+   - Branch Specifier: `main`
+   - Script Path: `example/Jenkinsfile`
+4. Click `Build Now` to execute the pipeline
+5. Fill in the user prompts at `Check CEM Settings` step, as shown in the above screen capture, and click `Proceed`
+   (You can also update the pipeline or Jenkins settings to set `CEM_ORG` & `CEM_APIKEY` eenvironment variables to avoid this prompt)
+5. Hover to each of the steps and click `Logs` to review the output, and [sample pipeline](/example/Jenkinsfile)
+
 ## Installation
 
 1. At Jenkins web console, access `Manage Jenkins` > `Configure System`
@@ -67,6 +84,9 @@ result.remediations.each {
 
 ## Sample Pipeline
 You can refer to the sample pipeline for all steps at [/example/Jenkinsfile](/example/Jenkinsfile)
+
+## Webhook
+You can refer to the procedure to register the CEM webhook at https://github.com/quincycheng/cem-jenkins-slack-conjur#to-register-cem-webhook-in-jenkins
 
 ## Reference
 - Jenkins Shared Library: https://www.jenkins.io/doc/book/pipeline/shared-libraries/
