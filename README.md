@@ -1,5 +1,17 @@
-# cem-jenkins-lib
-Jenkins Shared Library for CyberArk Cloud Entitlements Manager
+# Jenkins Shared Library for CyberArk Cloud Entitlements Manager
+
+  * [Quick Demo](#quick-demo)
+  * [Installation](#installation)
+  * [Configuration](#configuration)
+  * [Steps](#steps)
+    + [Get Accounts](#get-accounts)
+    + [Get Entities](#get-entities)
+    + [Get Entity Details](#get-entity-details)
+    + [Get Recommandations](#get-recommandations)
+    + [Get Remediations](#get-remediations)
+  * [Sample Pipeline](#sample-pipeline)
+  * [Webhook](#webhook)
+  * [Reference](#reference)
 
 ## Quick Demo
 
