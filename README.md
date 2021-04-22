@@ -26,8 +26,8 @@
    - Branch Specifier: `main`
    - Script Path: `example/Jenkinsfile`
 4. Click `Build Now` to execute the pipeline
-5. Fill in the user prompts at `Check CEM Settings` step, as shown in the above screen capture, and click `Proceed`
-   (You can also update the pipeline or Jenkins settings to set `CEM_ORG` & `CEM_APIKEY` eenvironment variables to avoid this prompt)
+5. When the progress paused at `Check CEM Settings` step, click on it and fill in the user prompts, as shown in the above screen capture, and click `Proceed`
+   (You can also update the pipeline or Jenkins settings to set `CEM_ORG` & `CEM_APIKEY` environment variables to avoid this prompt)
 5. Hover to each of the steps and click `Logs` to review the output, and [sample pipeline](/example/Jenkinsfile)
 
 ## Installation
@@ -47,7 +47,10 @@
    - Passing `org` and `accessKey` as parameters to the steps
 
 ## Steps
-Below are the step avaliable in this shared library and sample code snippets. 
+Below are the step avaliable in this shared library and their corresponding sample code snippets. 
+All steps will return results as JSON objects.
+Please refer to the [official CyberArk CEM API doc](https://docs.cyberark.com/Product-Doc/OnlineHelp/CEM/Latest/en/Content/HomeTilesLPs/LP-Tile6.htm) for parameters & expected results
+
 ### Get Accounts
 ```
 def result = cemGetAccounts()
@@ -61,7 +64,6 @@ for (platform in result.data) {
 ```
 
 ### Get Entities
-
 ```
 def result = cemGetEntities(platform: env.demo_platform)
 println("total no of entities: " + result.hits.size() )
