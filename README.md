@@ -7,7 +7,7 @@
     + [Get Accounts](#get-accounts)
     + [Get Entities](#get-entities)
     + [Get Entity Details](#get-entity-details)
-    + [Get Recommandations](#get-recommandations)
+    + [Get Recommendations](#get-recommendations)
     + [Get Remediations](#get-remediations)
   * [Sample Pipeline](#sample-pipeline)
   * [Webhook](#webhook)
@@ -76,7 +76,7 @@ def result = cemGetEntityDetails(platform: env.demo_platform, accountId: env.dem
 println "Name: $result.entity_name, Score: $result.exposure_level"
 ```
 
-### Get Recommandations
+### Get Recommendations
 ```
 def result = cemGetRecommendations(platform: env.demo_platform, accountId: env.demo_accountId, entityId: env.demo_entityId)                    
 println("Recommendations of $result.entity_id")
