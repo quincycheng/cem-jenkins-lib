@@ -106,3 +106,6 @@ Please note that setting up webhook doesn't require this shared library as depen
 ## Reference
 - Jenkins Shared Library: https://www.jenkins.io/doc/book/pipeline/shared-libraries/
 - CyberArk CEM API doc: https://docs.cyberark.com/Product-Doc/OnlineHelp/CEM/Latest/en/Content/HomeTilesLPs/LP-Tile6.htm
+
+## Maintainer
+[@quincycheng](https://github.com/quincycheng)
