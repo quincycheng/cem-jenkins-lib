@@ -2,6 +2,7 @@ def call(Map config = [:]) {
 
   theOrg = config.org ? config.org : env.CEM_ORG
   theApiKey = config.accessKey ? config.accessKey : env.CEM_APIKEY
+  isDebug = config.debug ? config.debug : false
 
   def reqBody = "{\"organization\": \"${theOrg}\",\"accessKey\":\"${theApiKey}\"}"
   def reqUrl = 'https://api.cem.cyberark.com/apis/login'
