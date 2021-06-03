@@ -14,7 +14,7 @@ def call(Map config = [:]) {
   post.setRequestMethod('POST')
   post.setDoOutput(true)
   post.setRequestProperty('Content-Type', 'application/json')
-  post.setRequestProperty('Content-Length', reqBody.length())
+  post.setRequestProperty('Content-Length', reqBody.length()toString())
 
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
   def postRC = post.getResponseCode()
