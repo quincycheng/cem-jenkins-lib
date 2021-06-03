@@ -19,9 +19,10 @@ def call(Map config = [:]) {
   post.setRequestProperty('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0')
   post.setRequestProperty('Host', 'api.cem.cyberark.com')
 
-  post.setRequestProperty('Content-Length', post.getContentLength() )
+    println("debug - login api content length: " + post.getContentLength() )
 
-  println("debug - login api content length: " + post.getContentLength() )
+  post.setRequestProperty('Content-Length', Integer.toString( post.getContentLength() ))
+
 
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
   def postRC = post.getResponseCode()
