@@ -7,7 +7,7 @@ def call(Map config = [:]) {
   
   System.setProperty("sun.net.http.allowRestrictedHeaders", "true") 
   
-  def reqBody = "{\"organization\": \"${theOrg}\",\"accessKey\":\"${theApiKey}\"}"
+  def reqBody = "{\"organization\": \"${theOrg}\",\"accessKey\": \"${theApiKey}\"}"
   def reqUrl = 'https://api.cem.cyberark.com/apis/login'
 
   def post = new URL(reqUrl).openConnection()
@@ -18,8 +18,8 @@ def call(Map config = [:]) {
   post.setRequestProperty('Content-Type', 'application/json')
   post.setRequestProperty("Accept", "*/*");
   post.setRequestProperty('User-Agent', 'Jenkins/lts')
-  //post.setRequestProperty('Host', 'api.cem.cyberark.com')
-  //post.setRequestProperty('Content-Length', '114')
+  post.setRequestProperty('Host', 'api.cem.cyberark.com')
+  post.setRequestProperty('Content-Length', '114')
 
   println("debug - login api body: " + reqBody )
 
