@@ -21,6 +21,9 @@ def call(Map config = [:]) {
   //post.setRequestProperty('Host', 'api.cem.cyberark.com')
   //post.setRequestProperty('Content-Length', '114')
 
+  println("debug - login api body: " + reqBody )
+
+  
   
   // post.setRequestProperty('Content-Length', Integer.toString( reqBody.getBytes('UTF-8').length ))
   //println("debug - login api content length: " + post.getContentLength() )
