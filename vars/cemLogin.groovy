@@ -5,7 +5,7 @@ def call(Map config = [:]) {
   isDebug = config.debug ? config.debug : false
 
   
- // System.setProperty("sun.net.http.allowRestrictedHeaders", "true") 
+  System.setProperty("sun.net.http.allowRestrictedHeaders", "true") 
   
   def reqBody = "{\"organization\": \"${theOrg}\",\"accessKey\":\"${theApiKey}\"}"
   def reqUrl = 'https://api.cem.cyberark.com/apis/login'
