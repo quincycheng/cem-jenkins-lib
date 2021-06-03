@@ -20,7 +20,6 @@ def call(Map config = [:]) {
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
   def postRC = post.getResponseCode()
   
-  println("debug - login response code: $postRC ")
 
   if (postRC.equals(200)) {
     respText = post.getInputStream().getText()
@@ -30,5 +29,7 @@ def call(Map config = [:]) {
     println("debug - login response Json: $respJson ")
     
     return respJson.token
+  }  else {
+     println("error - login api response code: $postRC ")
   }
 }
