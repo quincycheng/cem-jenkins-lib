@@ -11,9 +11,7 @@ def call(Map config = [:]) {
   def reqUrl = 'https://api.cem.cyberark.com/apis/login'
 
   def post = new URL(reqUrl).openConnection()
-  post.setRequestMethod('POST')
-  post.setDoOutput(true)
-  post.setDoInput(true);
+
 
   post.setRequestProperty('Content-Type', 'application/json')
   post.setRequestProperty("Accept", '*/*');
@@ -21,10 +19,11 @@ def call(Map config = [:]) {
   post.setRequestProperty('Host', 'api.cem.cyberark.com')
   post.setRequestProperty('Content-Length', Integer.toString( reqBody.getBytes('UTF-8').length ) )
 
-  //println("debug - login api body: " + reqBody )
   println("debug - login api content length: " + Integer.toString( reqBody.getBytes('UTF-8').length ))
 
-  
+  post.setRequestMethod('POST')
+  post.setDoOutput(true)
+  post.setDoInput(true);
   
   // post.setRequestProperty('Content-Length', Integer.toString( reqBody.getBytes('UTF-8').length ))
   //println("debug - login api content length: " + post.getContentLength() )
