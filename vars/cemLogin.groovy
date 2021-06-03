@@ -18,7 +18,7 @@ def call(Map config = [:]) {
   post.setRequestProperty('Content-Type', 'application/json')
   post.setRequestProperty("Accept", "*/*");
   post.setRequestProperty('User-Agent', 'PostmanRuntime/7.28.0')
-  post.setRequestProperty('Content-Length', '114' ))
+  post.setRequestProperty('Content-Length', '114')
 
   
  // post.setRequestProperty('Content-Length', Integer.toString( reqBody.getBytes('UTF-8').length ))
