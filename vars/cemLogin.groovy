@@ -4,6 +4,9 @@ def call(Map config = [:]) {
   theApiKey = config.accessKey ? config.accessKey : env.CEM_APIKEY
   isDebug = config.debug ? config.debug : false
 
+  
+  System.setProperty("sun.net.http.allowRestrictedHeaders", "true") 
+  
   def reqBody = "{\"organization\": \"${theOrg}\",\"accessKey\":\"${theApiKey}\"}"
   def reqUrl = 'https://api.cem.cyberark.com/apis/login'
 
@@ -11,6 +14,8 @@ def call(Map config = [:]) {
   post.setRequestMethod('POST')
   post.setDoOutput(true)
   post.setRequestProperty('Content-Type', 'application/json')
+  post.setRequestProperty('Content-Length', reqBody.length)
+
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
   def postRC = post.getResponseCode()
   
