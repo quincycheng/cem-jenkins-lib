@@ -48,6 +48,6 @@ def call(Map config = [:]) {
     return respJson.token
   }  else {
      println("error - login api response code: $postRC ")
-    println("error message: " + post.getErrorStream() )
+    println("error message: " + post.getErrorStream().getText() )
   }
 }
