@@ -16,13 +16,13 @@ def call(Map config = [:]) {
 //          post.setDoInput(true);
 
   post.setRequestProperty('Content-Type', 'application/json')
-  post.setRequestProperty("Accept", "*/*");
+  post.setRequestProperty("Accept", '*/*');
   post.setRequestProperty('User-Agent', 'PostmanRuntime/7.28.0')
   post.setRequestProperty('Host', 'api.cem.cyberark.com')
   post.setRequestProperty('Content-Length', '114')
 
   println("debug - login api body: " + reqBody )
-  println("debug - login api content length: " + reqBody.legnth )
+  println("debug - login api content length: " + Integer.toString( reqBody.getBytes('UTF-8').length )
 
   
   
