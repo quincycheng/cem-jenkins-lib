@@ -12,11 +12,16 @@ def call(Map config = [:]) {
   post.setRequestProperty('Content-Type', 'application/json')
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
   def postRC = post.getResponseCode()
+  
+  println("debug - login response code: $postRC ")
 
   if (postRC.equals(200)) {
     respText = post.getInputStream().getText()
     post = null
     respJson = readJSON text: (String)respText
+    
+    println("debug - login response Json: $respJson ")
+    
     return respJson.token
   }
 }
