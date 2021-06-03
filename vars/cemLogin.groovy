@@ -22,7 +22,7 @@ def call(Map config = [:]) {
   post.setRequestProperty('Content-Length', '114')
 
   println("debug - login api body: " + reqBody )
-  println("debug - login api content length: " + Integer.toString( reqBody.getBytes('UTF-8').length )
+  println("debug - login api content length: " + Integer.toString( reqBody.getBytes('UTF-8').length ))
 
   
   
