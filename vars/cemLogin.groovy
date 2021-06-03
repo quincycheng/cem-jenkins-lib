@@ -23,12 +23,12 @@ def call(Map config = [:]) {
 
   
   // post.setRequestProperty('Content-Length', Integer.toString( reqBody.getBytes('UTF-8').length ))
-  
-     println("debug - login api content length: " + reqBody.getBytes('UTF-8').length )
-  
-  
   //println("debug - login api content length: " + post.getContentLength() )
-  //post.setRequestProperty('Content-Length', Integer.toString( post.getContentLength() ))
+  //post.setRequestProperty('Content-Length', Integer.toString( post.getContentLength() ))  
+     println("debug - login api content length: " + post.getContentLength()  )
+  
+  
+
 
 
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
