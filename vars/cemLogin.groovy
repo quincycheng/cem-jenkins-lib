@@ -13,7 +13,7 @@ def call(Map config = [:]) {
   def post = new URL(reqUrl).openConnection()
   post.setRequestMethod('POST')
   post.setDoOutput(true)
-          post.setDoInput(true);
+//          post.setDoInput(true);
 
   post.setRequestProperty('Content-Type', 'application/json')
   post.setRequestProperty("Accept", "*/*");
@@ -25,11 +25,8 @@ def call(Map config = [:]) {
   // post.setRequestProperty('Content-Length', Integer.toString( reqBody.getBytes('UTF-8').length ))
   //println("debug - login api content length: " + post.getContentLength() )
   //post.setRequestProperty('Content-Length', Integer.toString( post.getContentLength() ))  
-     println("debug - login api content length: " + post.getContentLength()  )
   
-  
-
-
+ 
 
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
   def postRC = post.getResponseCode()
