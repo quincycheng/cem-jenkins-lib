@@ -29,6 +29,8 @@ def call(Map config = [:]) {
  
 
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
+  post.getOutputStream().flush()
+  
   def postRC = post.getResponseCode()
   
 
