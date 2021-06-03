@@ -14,7 +14,7 @@ def call(Map config = [:]) {
 
   post.setRequestMethod('POST')
   post.setDoOutput(true)
-
+post.setAllowUserInteraction(true); //
 
   post.setRequestProperty('Content-Type', 'application/json')
   post.setRequestProperty("Accept", 'application/json');
