@@ -13,6 +13,8 @@ def call(Map config = [:]) {
   def post = new URL(reqUrl).openConnection()
   post.setRequestMethod('POST')
   post.setDoOutput(true)
+          post.setDoInput(true);
+
   post.setRequestProperty('Content-Type', 'application/json')
   post.setRequestProperty("Accept", "*/*");
   post.setRequestProperty('User-Agent', 'PostmanRuntime/7.28.0')
