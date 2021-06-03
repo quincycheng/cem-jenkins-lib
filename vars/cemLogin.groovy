@@ -14,7 +14,7 @@ def call(Map config = [:]) {
   post.setRequestMethod('POST')
   post.setDoOutput(true)
   post.setRequestProperty('Content-Type', 'application/json')
-  post.setRequestProperty('Content-Length', reqBody.getBytes().length)
+  post.setRequestProperty('Content-Length', reqBody.getBytes().length.toString())
   post.setRequestProperty('Host', 'api.cem.cyberark.com')
 
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
