@@ -37,6 +37,7 @@
    - Name: `cem-jenkins-lib`
    - Default version: `main`
    - Modern SCM \ GitHub \ Repository HTTPS URL: `https://github.com/quincycheng/cem-jenkins-lib.git`
+3. Install `Pipeline Utility Steps`
 
 
 ## Configuration
