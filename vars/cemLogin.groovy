@@ -33,12 +33,12 @@ def call(Map config = [:]) {
 
   if (postRC.equals(200)) {
     respText = post.getInputStream().getText()
-        println("debug - login response text: $respText ")
+    if (isDebug) { println("debug - login response text: $respText ") }
 
     post = null
     respJson = readJSON text: (String)respText
     
-    println("debug - login response Json: $respJson ")
+    if (isDebug) { println("debug - login response Json: $respJson ") }
     
     return respJson.token
   }  else {
