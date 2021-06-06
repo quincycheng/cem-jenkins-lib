@@ -14,15 +14,15 @@ def call(Map config = [:]) {
 
   post.setRequestMethod('POST')
   post.setDoOutput(true)
-post.setAllowUserInteraction(true); //
+  //post.setAllowUserInteraction(true); //
 
   post.setRequestProperty('Content-Type', 'application/json')
   post.setRequestProperty("Accept", 'application/json');
-  post.setRequestProperty('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36')
-  post.setRequestProperty('Host', 'api.cem.cyberark.com')
-  post.setRequestProperty('Accept-Encoding', 'gzip, deflate, br')
-  post.setRequestProperty('Connection', 'keep-alive')
-  post.setRequestProperty('Content-Length', Integer.toString( reqBody.getBytes('UTF-8').length ) )
+  //post.setRequestProperty('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36')
+  //post.setRequestProperty('Host', 'api.cem.cyberark.com')
+  //post.setRequestProperty('Accept-Encoding', 'gzip, deflate, br')
+  //post.setRequestProperty('Connection', 'keep-alive')
+  //post.setRequestProperty('Content-Length', Integer.toString( reqBody.getBytes('UTF-8').length ) )
 
 
   post.getOutputStream().write(reqBody.getBytes('UTF-8'))
