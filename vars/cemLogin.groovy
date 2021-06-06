@@ -33,6 +33,8 @@ post.setAllowUserInteraction(true); //
 
   if (postRC.equals(200)) {
     respText = post.getInputStream().getText()
+        println("debug - login response text: $respText ")
+
     post = null
     respJson = readJSON text: (String)respText
     
